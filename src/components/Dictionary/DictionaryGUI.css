@@ -1,40 +1,135 @@
+/* Style for the entire GUI container */
+.super-container {
+    border: 2px solid #666;
+    border-radius: 2px;
+    border-color: #626161;
+}
+
+
+
+/* Style for the search-section */
+.search-section {
+    display: flex;
+    flex-direction: row; /* Align items in a row */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    padding: 20px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    max-width: 85%; /* Set a maximum width */
+    margin-left: auto; /* Align to the right */
+    margin-right: auto; /* Align to the left */
+    margin-top: 50px;
+} 
+
+/* Style for the input element */
+.search-section input[type="text"] {
+    width: 70%; /* Adjust the width as needed */
+    max-width: 600px; /* Limit the maximum width */
+    padding: 12px; /* Add padding to the input field */
+    font-size: 16px; /* Set the font size */
+    border: 2px solid #ddd; /* Add a border */
+    border-radius: 8px; /* Apply border radius */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+    background-color: #fff; /* Set background color */
+    outline: none; /* Remove outline */
+}
+
+/* Style for the search button */
+.search-section button {
+    padding: 12px 20px; /* Add padding to the button */
+    font-size: 16px; /* Set the font size */
+    border-radius: 8px; /* Apply border radius */
+    background-color: #333; /* Set background color */
+    color: #fff; /* Set text color */
+    cursor: pointer; /* Show pointer cursor on hover */
+    outline: none; /* Remove outline */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the search button */
+.search-section button:hover {
+    background-color: #626161; /* Darker background color on hover */
+}
+
+.content-wrapper {
+    font-family: 'Helvetica';
+    display: flex;
+    justify-content: center;
+    /* Center content horizontally */
+    min-height: 80vh; /* Adjust the height as needed */
+    padding: 20px;
+}
+
+/* Style for the main content container */
+.content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    /* Use grid layout with two columns */
+    grid-gap: 20px;
+    /* Add spacing between grid items */
+    max-width: 1200px;
+    /* Limit maximum width */
+    width: 100%;
+}
+
+/* Style for the left side (search results) */
+.search-results {
+    display: grid;
+    grid-gap: 20px;
+    /* Add spacing between grid items */
+}
+
 /* Style for each search result item container */
 .search-result {
     display: flex;
-    /* Use flexbox for layout */
     align-items: center;
-    /* Align items vertically */
     padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
     border-radius: 8px;
+    border-bottom: 1px solid #ddd; /* Add bottom border between search results */
 }
 
 /* Style for anime image within the result item */
 .search-result img {
     width: 100px;
-    /* Set fixed width for the image */
     height: 140px;
-    /* Set fixed height for the image */
     margin-right: 20px;
-    /* Add spacing between image and text */
     border-radius: 8px;
-    /* Apply border radius to image */
 }
 
 /* Style for text content within the result item */
 .search-result .result-info {
     flex: 1;
-    /* Allow text content to expand and fill remaining space */
 }
 
 /* Additional styles for result info text */
 .search-result .result-info h3 {
-    font-size: 18px;
+    font-size: 19px;
     margin-bottom: 8px;
 }
 
 .search-result .result-info p {
     font-size: 14px;
-    color: #666;
+}
+
+/* Style for the right side */
+.right-side {
+    display: grid;
+    grid-gap: 10px;
+    /* Add spacing between grid items */
+}
+
+/* Style for widget containers */
+.widget {
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Style for widget headings */
+.widget h2 {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
