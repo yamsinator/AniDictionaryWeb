@@ -1,0 +1,72 @@
+/* src/components/HomePage/HomePage.css */
+
+/* Overall Homepage Styles */
+.homepage {
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+    font-family: "Helvetica", sans-serif;
+    /* Sets font for entire page */
+}
+
+/* Content Wrapper Styles */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Panel Header Styles */
+.panel-header {
+    font-family: "Helvetica", sans-serif;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+    /* Center align the header */
+}
+
+.panel-header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* Content Section Styles */
+#content {
+    display: flex;
+    width: 100%;
+}
+
+/* Left Section Styles */
+.left-section {
+    flex: 2;
+    background-color: #444;
+    padding: 20px;
+    border-right: 2px solid #666;
+    margin-right: 0;
+    /* Vertical line separating left-section */
+}
+
+/* Right Section Styles */
+.right-section {
+    flex: 1;
+    background-color: #444;
+    padding: 20px;
+}
+
+/* Widget Styles */
+.widget {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.widget:last-child {
+    margin-bottom: 0;
+    /* Remove bottom margin from last widget */
+}
+
+.widget h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #666;
+    /* Horizontal line between widgets */
+}

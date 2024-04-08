@@ -1,0 +1,67 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #276cc0;
+    color: #fff;
+    padding: 10px 20px;
+    /* Ensure the navbar fills the entire width of its container */
+}
+
+.navbar .logo h2 {
+    margin: 0;
+    font-size: 24px;
+    /* Example: Increase font size for the logo */
+    font-family: Helvetica;
+    /* Use Helvetica font */
+}
+
+.navbar .nav-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar .nav-links ul li {
+    display: inline;
+    margin-right: 30px;
+    /* Increase the margin-right to add more space between links */
+}
+
+.navbar .nav-links ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    /* Example: Increase font size for nav links */
+    font-family: Helvetica;
+    /* Use Helvetica font */
+}
+
+.navbar .search input[type="text"] {
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 10px;
+    font-size: 16px;
+    /* Example: Increase font size for input */
+    font-family: Helvetica;
+    width: 315px;
+    /* Use Helvetica font */
+}
+
+.navbar .search button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #333;
+    color: #fff;
+    font-size: 18px;
+    /* Example: Increase font size for button */
+    font-family: Helvetica;
+    /* Use Helvetica font */
+}
+
+.navbar .search button:hover {
+    background-color: #626161;
+}

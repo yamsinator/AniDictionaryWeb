@@ -1,0 +1,40 @@
+/* Style for each search result item container */
+.search-result {
+    display: flex;
+    /* Use flexbox for layout */
+    align-items: center;
+    /* Align items vertically */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Style for anime image within the result item */
+.search-result img {
+    width: 100px;
+    /* Set fixed width for the image */
+    height: 140px;
+    /* Set fixed height for the image */
+    margin-right: 20px;
+    /* Add spacing between image and text */
+    border-radius: 8px;
+    /* Apply border radius to image */
+}
+
+/* Style for text content within the result item */
+.search-result .result-info {
+    flex: 1;
+    /* Allow text content to expand and fill remaining space */
+}
+
+/* Additional styles for result info text */
+.search-result .result-info h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.search-result .result-info p {
+    font-size: 14px;
+    color: #666;
+}
