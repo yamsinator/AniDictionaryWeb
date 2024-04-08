@@ -1,11 +1,13 @@
 /* Style for the entire GUI container */
 .super-container {
+    font-family: 'Helvetica';
     border: 2px solid #666;
     border-radius: 2px;
     border-color: #626161;
+    /* max-width: 67%; /* Set a maximum width */
+    /* margin: 50px auto; /* Center the container horizontally with top and bottom margin */
+    padding: 20px; /* Add padding inside the container */
 }
-
-
 
 /* Style for the search-section */
 .search-section {
@@ -14,9 +16,9 @@
     justify-content: center; /* Center items horizontally */
     align-items: center; /* Center items vertically */
     padding: 20px;
-    border: 2px solid #ddd;
+    /* border: 2px solid #ddd; */
     border-radius: 8px;
-    background-color: #fff;
+    /* background-color: #fff; */
     margin-bottom: 20px;
     max-width: 85%; /* Set a maximum width */
     margin-left: auto; /* Align to the right */
@@ -26,23 +28,24 @@
 
 /* Style for the input element */
 .search-section input[type="text"] {
-    width: 70%; /* Adjust the width as needed */
-    max-width: 600px; /* Limit the maximum width */
+    width: 500%; /* Limit the maximum width */
     padding: 12px; /* Add padding to the input field */
-    font-size: 16px; /* Set the font size */
+    font-size: 17px; /* Set the font size */
     border: 2px solid #ddd; /* Add a border */
     border-radius: 8px; /* Apply border radius */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
     background-color: #fff; /* Set background color */
     outline: none; /* Remove outline */
+    align-items: center;
 }
 
 /* Style for the search button */
 .search-section button {
-    padding: 12px 20px; /* Add padding to the button */
+    padding: 15px 15px; /* Add padding to the button */
     font-size: 16px; /* Set the font size */
     border-radius: 8px; /* Apply border radius */
     background-color: #333; /* Set background color */
+    margin-left: auto;
     color: #fff; /* Set text color */
     cursor: pointer; /* Show pointer cursor on hover */
     outline: none; /* Remove outline */
@@ -55,7 +58,6 @@
 }
 
 .content-wrapper {
-    font-family: 'Helvetica';
     display: flex;
     justify-content: center;
     /* Center content horizontally */

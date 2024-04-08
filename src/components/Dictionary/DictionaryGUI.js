@@ -20,7 +20,7 @@ function DictionaryGUI() {
         <div className="super-container">
             <div className="search-section">
                 <label>
-                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Anime...'/>
                 </label>
                 <button onClick={handleSearch}>Search</button>
             </div>

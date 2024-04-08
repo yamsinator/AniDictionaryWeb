@@ -15,6 +15,22 @@ function Navbar() {
                     <li><a href="#">Help</a></li>
                 </ul>
             </div>
+            <div id="search-type">
+                <select name="types" id="type">
+                    <option>All</option>
+                    <option>Anime</option>
+                    <option>Manga</option>
+                    <option>Characters</option>
+                    <option>People</option>
+                    <option>Companies</option>
+                    <option>Manga Store</option>
+                    <option>News</option>
+                    <option>Featured Articles</option>
+                    <option>Forum</option>
+                    <option>Clubs</option>
+                    <option>Users</option>
+                </select>
+            </div>
             <div className="search">
                 <input type="text" placeholder="Search Anime, Manga, and more..." />
                 <button>Search</button>
