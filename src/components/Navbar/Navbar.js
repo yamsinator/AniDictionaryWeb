@@ -1,7 +1,22 @@
 import React, { useState } from 'react';
 import './Navbar.css';
+import { searchAnimeByName } from '../Dictionary/Dictionary'; // Import search functions
+
 
 function Navbar() {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [searchResults, setSearchResults] = useState([]);
+
+    const aniSearch = async () => {
+        if (searchTerm.trim() === '') {
+            alert('Please enter something to search');
+            return;
+        }
+
+        const results = await searchAnimeByName(searchTerm);
+        setSearchResults(results);
+    };
+
     return (
         <nav className="navbar">
             <div className="nav-links">
@@ -15,7 +30,7 @@ function Navbar() {
                     <li><a href="#">Help</a></li>
                 </ul>
             </div>
-            <div id="search-type">
+            {/* <div id="search-type">
                 <select name="types" id="type">
                     <option>All</option>
                     <option>Anime</option>
@@ -30,7 +45,7 @@ function Navbar() {
                     <option>Clubs</option>
                     <option>Users</option>
                 </select>
-            </div>
+            </div> */}
             <div className="search">
                 <input type="text" placeholder="Search Anime, Manga, and more..." />
                 <button>Search</button>

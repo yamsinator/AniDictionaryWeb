@@ -70,3 +70,28 @@
     border-bottom: 2px solid #666;
     /* Horizontal line between widgets */
 }
+
+/* HomePage.css */
+
+/* Styles for anime items and scroll container */
+.scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit (Chrome, Safari, etc.) */
+}
+
+.anime-item {
+    margin-right: 20px;
+}
+
+.anime-image {
+    width: 200px; /* Adjust image width as needed */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

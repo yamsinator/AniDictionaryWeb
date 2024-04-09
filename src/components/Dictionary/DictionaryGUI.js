@@ -6,7 +6,7 @@ function DictionaryGUI() {
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
-    const handleSearch = async () => {
+    const aniSearch = async () => {
         if (searchTerm.trim() === '') {
             alert('Please enter something to search');
             return;
@@ -16,13 +16,19 @@ function DictionaryGUI() {
         setSearchResults(results);
     };
 
+    const handleKeyPress = (e) => {
+        if(e.key ==='Enter') {
+            aniSearch();
+        }
+    }
+
     return (
         <div className="super-container">
             <div className="search-section">
                 <label>
-                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} placeholder='Search Anime...'/>
+                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onKeyPress={handleKeyPress} placeholder='Search Anime...'/>
                 </label>
-                <button onClick={handleSearch}>Search</button>
+                <button onClick={aniSearch}>Search</button>
             </div>
             {/* Display search results */}
             {searchResults.length > 0 && (
@@ -31,7 +37,7 @@ function DictionaryGUI() {
                         <div className="search-results">
                             {searchResults.map((result) => (
                                 <div key={result.id} className="search-result">
-                                    <img src={result.small_image_url} />
+                                    <img src={result.images.jpg.large_image_url} />
                                     <div className="result-info">
                                         <a href="#"><h3>{result.title}</h3></a>
                                         <p>{result.type} ({result.episodes} eps)</p>

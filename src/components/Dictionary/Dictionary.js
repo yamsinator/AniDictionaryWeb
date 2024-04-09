@@ -1,5 +1,8 @@
+import { alignPropType } from "react-bootstrap/esm/types";
+
 const API_BASE_URL = 'https://api.jikan.moe/v4/';
 
+// Gets search based from the anime, manga, or character API URLs
 async function performSearch(type, searchQuery) {
     try {
         const response = await fetch(`${API_BASE_URL}${type}?q=${encodeURIComponent(searchQuery)}`);
@@ -14,6 +17,9 @@ async function performSearch(type, searchQuery) {
     }
 }
 
+
+
+ 
 export async function searchAnimeByName(animeName) {
     return performSearch('anime', animeName);
 }
@@ -25,3 +31,7 @@ export async function searchMangaByName(mangaName) {
 export async function searchCharactersByName(charName) {
     return performSearch('characters', charName);
 }
+
+// export async function searchPeopleByName(personName) {
+//     return performSearch('people', personName);
+// }

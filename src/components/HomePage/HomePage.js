@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './HomePage.css';
+//import { searchAnimeByName } from '../Dictionary/Dictionary';
 
 const HomePage = () => {
-    return (
+    const [animeData, setAnimeData] = useState([]);
 
+    useEffect(() => {
+        const fetchAnimeData = async () => {
+            try {
+                const response = await axios.get('https://api.jikan.moe/v4/seasons/now');
+                if (response.data && response.data.anime) {
+                    setAnimeData(response.data.anime);
+                }
+            } catch (error) {
+                console.error('Error fetching anime data:', error);
+            }
+        };
+
+        fetchAnimeData();
+    }, []);
+
+    return (
         <div className="homepage">
             <div className="content-wrapper">
                 {/* Left Section */}
@@ -14,23 +32,38 @@ const HomePage = () => {
                     <div className="left-section">
                         <div className="widget">
                             <h2>Announcements</h2>
-                            {/* Content for Announcements */}
+                            {<p>No announcements</p>}
                         </div>
                         <div className="widget">
                             <h2>Spring 2024 Anime</h2>
-                            {/* Content for Spring 2024 Anime */}
+                            <div className="scroll-container">
+                            {animeData.map((anime) => (
+                                    <img
+                                        key={anime.mal_id}
+                                        src={anime.images.jpg.large_image_url}
+                                        alt={anime.title}
+                                        className="anime-image"
+                                    />
+                                ))}
+                            </div>
                         </div>
                         <div className="widget">
                             <h2>Manga</h2>
-                            {/* Content for Manga */}
+                            <div className="scroll-container">
+                                {/* Render images here */}
+                            </div>
                         </div>
                         <div className="widget">
                             <h2>Anime Suggestions</h2>
-                            {/* Content for Anime Suggestions */}
+                            <div className="scroll-container">
+                                {/* Render images here */}
+                            </div>
                         </div>
                         <div className="widget">
                             <h2>Manga Suggestions</h2>
-                            {/* Content for Manga Suggestions */}
+                            <div className="scroll-container">
+                                {/* Render images here */}
+                            </div>
                         </div>
                     </div>
                     {/* Right Section */}

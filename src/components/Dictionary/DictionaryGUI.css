@@ -4,52 +4,52 @@
     border: 2px solid #666;
     border-radius: 2px;
     border-color: #626161;
-    /* max-width: 67%; /* Set a maximum width */
-    /* margin: 50px auto; /* Center the container horizontally with top and bottom margin */
+    max-width: 67%; /* Set a maximum width */
+    margin: 50px auto; /* Center the container horizontally with top and bottom margin */
     padding: 20px; /* Add padding inside the container */
 }
 
 /* Style for the search-section */
 .search-section {
     display: flex;
-    flex-direction: row; /* Align items in a row */
     justify-content: center; /* Center items horizontally */
     align-items: center; /* Center items vertically */
     padding: 20px;
-    /* border: 2px solid #ddd; */
     border-radius: 8px;
-    /* background-color: #fff; */
     margin-bottom: 20px;
-    max-width: 85%; /* Set a maximum width */
-    margin-left: auto; /* Align to the right */
-    margin-right: auto; /* Align to the left */
-    margin-top: 50px;
-} 
+    max-width: 100%; /* Set maximum width to 100% */
+    margin: 50px auto; /* Center horizontally with auto left/right margins */
+    /* background-color: #ddd; */
+}
 
 /* Style for the input element */
 .search-section input[type="text"] {
-    width: 500%; /* Limit the maximum width */
+    flex: 1; /* Allow input to grow and take available space */
     padding: 12px; /* Add padding to the input field */
-    font-size: 17px; /* Set the font size */
-    border: 2px solid #ddd; /* Add a border */
-    border-radius: 8px; /* Apply border radius */
+    font-size: 18px; /* Set the font size */
+    border-radius: 8px 0 0 8px; /* Apply border radius */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
     background-color: #fff; /* Set background color */
     outline: none; /* Remove outline */
-    align-items: center;
+    height: 25px;
+    width: 715px;
+    vertical-align: middle;
+    line-height: 1;
 }
 
 /* Style for the search button */
 .search-section button {
-    padding: 15px 15px; /* Add padding to the button */
     font-size: 16px; /* Set the font size */
-    border-radius: 8px; /* Apply border radius */
+    border-radius: 0 8px 8px 0; /* Apply border radius */
     background-color: #333; /* Set background color */
-    margin-left: auto;
     color: #fff; /* Set text color */
     cursor: pointer; /* Show pointer cursor on hover */
     outline: none; /* Remove outline */
     transition: background-color 0.3s ease; /* Smooth transition */
+    width: 100px;
+    height: 52px;
+    margin-top: -7px;
+
 }
 
 /* Hover effect for the search button */
