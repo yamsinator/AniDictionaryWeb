@@ -96,7 +96,7 @@ function DictionaryGUI() {
                                         <div className="result-info">
                                             <a href={`/InfoPage/${charResults.name}`}><h3>{charResults.name}</h3></a>
                                             <p>{charResults.name_kanji}</p>
-                                            <p>Favorites: {charResults.favorites}</p>
+                                            <p>Favorites: {charResults.favorites.toLocaleString()}</p>
                                             {/* Add more information here as needed */}
                                         </div>
                                     </div>
@@ -112,7 +112,7 @@ function DictionaryGUI() {
                                             <a href={`/InfoPage/${peopleResults.name}`}><h3>{peopleResults.name}</h3></a>
                                             <p>{peopleResults.given_name} ({peopleResults.family_name})</p>
                                             <p>{formatDate(peopleResults.birthday)}</p>
-                                            <p>{peopleResults.favorites}</p>
+                                            <p>{peopleResults.favorites.toLocaleString()}</p>
                                             {/* Add more information here as needed */}
                                         </div>
                                     </div>
