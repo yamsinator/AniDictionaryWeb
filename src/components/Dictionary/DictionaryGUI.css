@@ -16,7 +16,7 @@
     align-items: center; /* Center items vertically */
     padding: 20px;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     max-width: 100%; /* Set maximum width to 100% */
     margin: 50px auto; /* Center horizontally with auto left/right margins */
     /* background-color: #ddd; */
@@ -57,6 +57,27 @@
     background-color: #626161; /* Darker background color on hover */
 }
 
+.jump {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.jump a {
+    font-size: 16px;
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.4s ease;
+}
+
+.jump a:hover {
+    background-color: #eee;
+    color: #333;
+}
+
 .content-wrapper {
     display: flex;
     justify-content: center;
@@ -90,6 +111,7 @@
     color: #fff;
     margin-bottom: 10px;
     position: relative;
+    scroll-margin-block-start: 40px;
 }
 
 /* Style for each search result item container */

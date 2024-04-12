@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { searchAnimeByName, searchCharactersByName, searchMangaByName, searchPeopleByName } from './Dictionary';
 import './DictionaryGUI.css'; // Import custom CSS styles
 
 function DictionaryGUI() {
-
     const [searchTerm, setSearchTerm] = useState('');
     const [animeResults, setAnimeResults] = useState([]);
     const [mangaResults, setMangaResults] = useState([]);
     const [charResults, setCharResults] = useState([]);
     const [peopleResults, setPeopleResults] = useState([]);
+    const [searched, setSearched] = useState(false);
 
+    // Refs for each section to enable scrolling
+    const animeRef = useRef(null);
+    const mangaRef = useRef(null);
+    const charactersRef = useRef(null);
+    const peopleRef = useRef(null);
+
+    // Function to commit search on each type of search query for the dicitonary
     const search = async () => {
         if (searchTerm.trim() === '') {
             alert('Please enter something to search');
@@ -27,6 +34,8 @@ function DictionaryGUI() {
 
         const peopleResults = await searchPeopleByName(searchTerm);
         setPeopleResults(peopleResults);
+
+        setSearched(true);
     };
 
     const handleKeyPress = (e) => {
@@ -35,11 +44,19 @@ function DictionaryGUI() {
         }
     }
 
-      // Function to format date by removing time information
-      const formatDate = (dateTimeString) => {
+    // Function to format date by removing time information
+    const formatDate = (dateTimeString) => {
         const dateObj = new Date(dateTimeString);
         const formattedDate = dateObj.toISOString().split('T')[0]; // Extract date part
         return formattedDate;
+    };
+
+    // Function to scroll to a specific section smoothly
+    const scrollToSection = (id) => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
     };
 
     return (
@@ -50,16 +67,24 @@ function DictionaryGUI() {
                 </label>
                 <button onClick={search}>Search</button>
             </div>
+            {searched && (
+                <div className="jump">
+                    <p>Jump to: <a onClick={() => scrollToSection('anime')}>Anime</a>
+                        <a onClick={() => scrollToSection('manga')}>Manga</a>
+                        <a onClick={() => scrollToSection('character')}>Characters</a>
+                        <a onClick={() => scrollToSection('people')}>People</a></p>
+                </div>
+            )}
             {/* Display search results */}
             {animeResults.length > 0 && (
                 <div className="content-wrapper">
                     <div className="content">
                         <div className="search-results">
                             <div className="article">
-                                <h1>Anime</h1>
+                                <h1 id="anime">Anime</h1>
                                 {/* Anime Results */}
                                 {animeResults.map((animeResults) => (
-                                    <div key={animeResults.id} className="search-result">
+                                    <div ref={animeRef} key={animeResults.id} className="search-result">
                                         <img src={animeResults.images.jpg.large_image_url} />
                                         <div className="result-info">
                                             <a href={`/InfoPage/${animeResults.title}`}><h3>{animeResults.title}</h3></a>
@@ -73,9 +98,9 @@ function DictionaryGUI() {
                             </div>
                             {/* Manga Results */}
                             <div className="article">
-                                <h1>Manga</h1>
+                                <h1 id="manga">Manga</h1>
                                 {mangaResults.map((mangaResults) => (
-                                    <div id="manga" key={mangaResults.id} className="search-result">
+                                    <div ref={mangaRef} key={mangaResults.id} className="search-result">
                                         <img src={mangaResults.images.jpg.large_image_url} />
                                         <div className="result-info">
                                             <a href={`/InfoPage/${mangaResults.title}`}><h3>{mangaResults.title}</h3></a>
@@ -89,9 +114,9 @@ function DictionaryGUI() {
                             </div>
                             {/* Character Results */}
                             <div className="article">
-                                <h1>Characters</h1>
+                                <h1 id="character">Characters</h1>
                                 {charResults.map((charResults) => (
-                                    <div id="character" key={charResults.id} className="search-result">
+                                    <div ref={charactersRef} key={charResults.id} className="search-result">
                                         <img src={charResults.images.jpg.image_url} />
                                         <div className="result-info">
                                             <a href={`/InfoPage/${charResults.name}`}><h3>{charResults.name}</h3></a>
@@ -104,9 +129,9 @@ function DictionaryGUI() {
                             </div>
                             {/* People Results */}
                             <div className="article">
-                                <h1>People</h1>
+                                <h1 id="people">People</h1>
                                 {peopleResults.map((peopleResults) => (
-                                    <div id="people" key={peopleResults.mal_id} className="search-result">
+                                    <div ref={peopleRef} key={peopleResults.mal_id} className="search-result">
                                         <img src={peopleResults.images.jpg.image_url} />
                                         <div className="result-info">
                                             <a href={`/InfoPage/${peopleResults.name}`}><h3>{peopleResults.name}</h3></a>
