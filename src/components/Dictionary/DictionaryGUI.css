@@ -77,11 +77,19 @@
     width: 100%;
 }
 
-/* Style for the left side (search results) */
-.search-results {
-    display: grid;
-    grid-gap: 20px;
-    /* Add spacing between grid items */
+/* Style for anime and manga articles */
+.article {
+    background-color: #222121;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.article h1 {
+    font-size: 24px;
+    color: #fff;
+    margin-bottom: 10px;
+    position: relative;
 }
 
 /* Style for each search result item container */
@@ -89,15 +97,15 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border-bottom: 1px solid #ddd; /* Add bottom border between search results */
+    border-top: 1px solid #ddd;
+    /* border-bottom: 1px solid #ddd;  */
+    /* Add bottom border between search results */
 }
 
-/* Style for anime image within the result item */
+/* Adjust the size of the search result images */
 .search-result img {
-    width: 100px;
-    height: 140px;
+    width: 80px; /* Reduce image width */
+    height: 110px; /* Reduce image height */
     margin-right: 20px;
     border-radius: 8px;
 }
@@ -109,12 +117,13 @@
 
 /* Additional styles for result info text */
 .search-result .result-info h3 {
-    font-size: 19px;
-    margin-bottom: 8px;
+    font-size: 16px; /* Reduce title font size */
+    margin-bottom: 5px;
 }
 
 .search-result .result-info p {
-    font-size: 14px;
+    font-size: 12px; /* Reduce paragraph font size */
+    margin-bottom: 5px;
 }
 
 /* Style for the right side */

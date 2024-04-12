@@ -32,6 +32,8 @@ export async function searchCharactersByName(charName) {
     return performSearch('characters', charName);
 }
 
-// export async function searchPeopleByName(personName) {
-//     return performSearch('people', personName);
-// }
+export async function searchPeopleByName(personName) {
+    return performSearch('people', personName);
+}
+
+
