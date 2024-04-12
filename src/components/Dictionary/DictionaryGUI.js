@@ -3,6 +3,7 @@ import { searchAnimeByName } from './Dictionary';
 import './DictionaryGUI.css'; // Import custom CSS styles
 
 function DictionaryGUI() {
+    
     const [searchTerm, setSearchTerm] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
@@ -39,7 +40,7 @@ function DictionaryGUI() {
                                 <div key={result.id} className="search-result">
                                     <img src={result.images.jpg.large_image_url} />
                                     <div className="result-info">
-                                        <a href="#"><h3>{result.title}</h3></a>
+                                        <a href={`/InfoPage/${result.title}`}><h3>{result.title}</h3></a>
                                         <p>{result.type} ({result.episodes} eps)</p>
                                         <p>Score: {result.score}</p>
                                         <p>{result.members.toLocaleString()} members</p>
