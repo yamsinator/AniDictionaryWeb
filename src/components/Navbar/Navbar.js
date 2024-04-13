@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './Navbar.css';
-import { searchAnimeByName } from '../Dictionary/Dictionary'; // Import search functions
-
 
 function Navbar() {
     const [searchTerm, setSearchTerm] = useState('');
-    const [searchResults, setSearchResults] = useState([]);
+    const history = useHistory();
 
-    const aniSearch = async () => {
-        if (searchTerm.trim() === '') {
-            alert('Please enter something to search');
-            return;
+    const handleSearch = () => {
+        if (searchTerm.trim() !== '') {
+            history.push(`/dictionary?search=${encodeURIComponent(searchTerm)}`);
+        } 
+        else {
+            alert("Please enter something to search")
         }
-
-        const results = await searchAnimeByName(searchTerm);
-        setSearchResults(results);
     };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    }
 
     return (
         <nav className="navbar">
@@ -47,8 +51,11 @@ function Navbar() {
                 </select>
             </div> */}
             <div className="search">
-                <input type="text" placeholder="Search Anime, Manga, and more..." />
-                <button>Search</button>
+                <input type="text" value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Search Anime, Manga, and more..." />
+                <button onClick={handleSearch} onChange={(e) => setSearchTerm(e.target.value)}>Search</button>
             </div>
         </nav>
     );

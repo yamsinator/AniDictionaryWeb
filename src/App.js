@@ -14,7 +14,7 @@ function App() {
         <Header />
         <Navbar />
         <Switch>
-          <Route exact path="/home">
+        <Route exact path="/home">
             <HomePage />
           </Route>
           <Route exact path="/dictionary">

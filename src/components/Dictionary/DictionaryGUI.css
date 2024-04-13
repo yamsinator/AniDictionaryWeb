@@ -58,9 +58,15 @@
 }
 
 .jump {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+    text-align: center;
+}
+
+.jump h2 {
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #276cc0;
+
 }
 
 .jump a {
@@ -135,6 +141,10 @@
 /* Style for text content within the result item */
 .search-result .result-info {
     flex: 1;
+}
+
+.result-info a {
+    color: 276cc0;
 }
 
 /* Additional styles for result info text */

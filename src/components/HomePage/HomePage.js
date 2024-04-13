@@ -26,7 +26,7 @@ const HomePage = () => {
             <div className="content-wrapper">
                 {/* Left Section */}
                 <div className="panel-header">
-                    <h1>My Panel</h1>
+                    <h1>Welcome to AniDictionary!</h1>
                 </div>
                 <div id="content">
                     <div className="left-section">
