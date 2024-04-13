@@ -5,7 +5,7 @@ import {
     searchCharactersByName,
     searchMangaByName,
     searchPeopleByName,
-    searchNewsByID
+    // searchNewsByID
 } from './Dictionary';
 import './DictionaryGUI.css'; // Import custom CSS styles
 
@@ -15,11 +15,12 @@ function DictionaryGUI() {
     const [mangaResults, setMangaResults] = useState([]);
     const [charResults, setCharResults] = useState([]);
     const [peopleResults, setPeopleResults] = useState([]);
-    const [newsResults, setNewsResults] = useState([]);
+    // const [newsResults, setNewsResults] = useState([]);
     const [searched, setSearched] = useState(false);
 
 
     const location = useLocation();
+    const searchTimeoutRef = useRef(null);
 
     // Refs for each section to enable scrolling
     const animeRef = useRef(null);
@@ -27,32 +28,68 @@ function DictionaryGUI() {
     const charactersRef = useRef(null);
     const peopleRef = useRef(null);
 
-    // Function to commit search on each type of search query for the dicitonary
-    const search = async () => {
-        if (searchTerm.trim() === '') {
-            alert('Please enter something to search');
-            return;
-        }
+    const search = () => {
+        clearTimeout(searchTimeoutRef.current);
+        searchTimeoutRef.current = setTimeout(async () => {
+            if (searchTerm.trim() === '') {
+                setAnimeResults([]);
+                setMangaResults([]);
+                setCharResults([]);
+                setPeopleResults([]);
+                // setNewsResults([]);
+                setSearched(false);
+                return;
+            }
 
-        setSearched(true);
+            setSearched(true);
 
-        const animeResults = await searchAnimeByName(searchTerm);
-        setAnimeResults(animeResults);
+            const animeResults = await searchAnimeByName(searchTerm);
+            setAnimeResults(animeResults);
 
-        const mangaResults = await searchMangaByName(searchTerm);
-        // console.log("MANGA RESULTS: ", mangaResults);
-        setMangaResults(mangaResults);
+            const mangaResults = await searchMangaByName(searchTerm);
+            setMangaResults(mangaResults);
 
-        const charResults = await searchCharactersByName(searchTerm);
-        setCharResults(charResults);
+            const charResults = await searchCharactersByName(searchTerm);
+            setCharResults(charResults);
 
-        const peopleResults = await searchPeopleByName(searchTerm);
-        setPeopleResults(peopleResults);
+            const peopleResults = await searchPeopleByName(searchTerm);
+            setPeopleResults(peopleResults);
 
-        const animeId = animeResults[0].mal_id;
-        const newsResults = await searchNewsByID(animeId);
-        setNewsResults(newsResults);
+            // if (animeResults.length > 0) {
+            //     const animeId = animeResults[0].mal_id;
+            //     const newsResults = await searchNewsByID(animeId);
+            //     setNewsResults(newsResults);
+            // }
+        }, 3000); // Adjust the debounce delay (in milliseconds) as needed
     };
+    // Function to commit search on each type of search query for the dicitonary
+    // const search = async () => {
+    //     if (searchTerm.trim() === '') {
+    //         alert('Please enter something to search');
+    //         return;
+    //     }
+
+    //     setSearched(true);
+
+    //     const animeResults = await searchAnimeByName(searchTerm);
+    //     setAnimeResults(animeResults);
+
+    //     const mangaResults = await searchMangaByName(searchTerm);
+    //     // console.log("MANGA RESULTS: ", mangaResults);
+    //     setMangaResults(mangaResults);
+
+    //     const charResults = await searchCharactersByName(searchTerm);
+    //     setCharResults(charResults);
+
+    //     const peopleResults = await searchPeopleByName(searchTerm);
+    //     setPeopleResults(peopleResults);
+
+    //     if (animeResults.length > 0) {
+    //         const animeId = animeResults[0].mal_id;
+    //         const newsResults = await searchNewsByID(animeId);
+    //         setNewsResults(newsResults);
+    //     }
+    // };
 
     const handleKeyPress = (e) => {
         if (e.key === 'Enter') {
@@ -92,11 +129,15 @@ function DictionaryGUI() {
         }
     }, [searchTerm]);
 
+    const handleInputChange = (e) => {
+        setSearchTerm(e.target.value);
+    };
+
     return (
         <div className="super-container">
             <div className="search-section">
                 <label>
-                    <input type="text" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} onKeyPress={handleKeyPress} placeholder='Search Anime...' />
+                    <input type="text" value={searchTerm} onChange={handleInputChange} onKeyPress={handleKeyPress} placeholder='Search Anime...' />
                 </label>
                 <button onClick={search} onChange={(e) => setSearchTerm(e.target.value)}>Search</button>
             </div>
@@ -192,29 +233,32 @@ function DictionaryGUI() {
                                 <h2>News</h2>
                                 <article>
                                     {/* Content for News */}
-                                    {newsResults.slice(0, 5).map((newsResults) => (
+                                    <h3>News coming soon...</h3>
+                                    {/* {newsResults.slice(0, 5).map((newsResults) => (
                                         <div key={newsResults.mal_id} className="news-result">
                                             <a href={newsResults.url}><h3>{newsResults.title}</h3></a>
-                                            {/* Add more content properties as needed */}
                                         </div>
-                                    ))}
+                                    ))} */}
                                 </article>
                             </div>
                             <div className="widget">
                                 <h2>Featured Articles</h2>
                                 <article>
+                                    <h3>Featured Articles coming soon...</h3>
                                     {/* Content for Featured Articles */}
                                 </article>
                             </div>
                             <div className="widget">
                                 <h2>Forum Topics</h2>
                                 <article>
+                                <h3>Forum Topics coming soon...</h3>
                                     {/* Content for Forum Topics */}
                                 </article>
                             </div>
                             <div className="widget">
                                 <h2>Clubs</h2>
                                 <article>
+                                <h3>Clubs coming soon...</h3>
                                     {/* Content for Clubs */}
                                 </article>
 

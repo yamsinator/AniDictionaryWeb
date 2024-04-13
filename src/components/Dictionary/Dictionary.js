@@ -1,5 +1,8 @@
 const API_BASE_URL = 'https://api.jikan.moe/v4/';
 
+// Cache object to store fetched anime news data
+const animeNewsCache = {};
+
 // Gets search based from the anime, manga, or character API URLs
 async function performSearch(type, searchQuery) {
     try {
@@ -9,39 +12,46 @@ async function performSearch(type, searchQuery) {
         }
         const data = await response.json();
 
-        const animeId = data.data.mal_id;
-        const animeNews = await fetchAnimeNews(animeId);
+        // const animeId = data.data.mal_id;
+        // const animeNews = await fetchAnimeNews(animeId);
 
         return data.data;
-    } 
-    catch (error) {
+    } catch (error) {
         console.error('Error fetching data:', error);
         return [];
     }
 }
 
-async function fetchAnimeNews(animeID) {
-    try {
-        // Construct the URL for fetching news articles for the specified anime
-        const response = await fetch(`${API_BASE_URL}anime/${animeID}/news`);
+// async function fetchAnimeNews(animeID) {
+//     try {
+//         if (!animeID) {
+//             throw new Error('Invalid anime ID');
+//         }
 
-        // Check if the response status is not okay
-        if (!response.ok) {
-            throw new Error('Failed to fetch anime news');
-        }
+//         // Check if anime news data for this anime ID is already cached
+//         if (animeNewsCache[animeID]) {
+//             return animeNewsCache[animeID];
+//         }
 
-        // Parse the response JSON data
-        const data = await response.json();
+//         // If not cached, fetch anime news data from the API
+//         const response = await fetch(`${API_BASE_URL}anime/${animeID}/news`);
 
-        // Return the array of news articles from the 'data' property
-        return data.data;
-    } 
-    catch (error) {
-        console.error('Error fetching anime news:', error);
-        return []; // Return an empty array if there's an error
-    }
-}
- 
+//         if (!response.ok) {
+//             throw new Error(`Failed to fetch anime news for anime ID: ${animeID}`);
+//         }
+
+//         const data = await response.json();
+
+//         // Cache the fetched anime news data
+//         animeNewsCache[animeID] = data.data;
+
+//         return data.data;
+//     } catch (error) {
+//         console.error('Error fetching anime news:', error);
+//         return []; // Return an empty array if there's an error
+//     }
+// }
+
 export async function searchAnimeByName(animeName) {
     return performSearch('anime', animeName);
 }
@@ -58,8 +68,6 @@ export async function searchPeopleByName(personName) {
     return performSearch('people', personName);
 }
 
-export async function searchNewsByID(animeID) {
-    return fetchAnimeNews(animeID);
-}
-
-
+// export async function searchNewsByID(animeID) {
+//     return fetchAnimeNews(animeID);
+// }
