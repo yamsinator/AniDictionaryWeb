@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import {
     searchAnimeByName,
     searchCharactersByName,
     searchMangaByName,
     searchPeopleByName,
-    // searchNewsByID
 } from './Dictionary';
 import './DictionaryGUI.css'; // Import custom CSS styles
 
@@ -16,10 +15,10 @@ function DictionaryGUI() {
     const [mangaResults, setMangaResults] = useState([]);
     const [charResults, setCharResults] = useState([]);
     const [peopleResults, setPeopleResults] = useState([]);
-    // const [newsResults, setNewsResults] = useState([]);
     const [searched, setSearched] = useState(false);
 
     const location = useLocation();
+    const history = useHistory();
     const searchTimeoutRef = useRef(null);
 
     // Refs for each section to enable scrolling
@@ -28,7 +27,7 @@ function DictionaryGUI() {
     const charactersRef = useRef(null);
     const peopleRef = useRef(null);
 
-    // Helper function to add a delay
+    // Add delay
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     const handleSearch = async () => {
@@ -86,15 +85,20 @@ function DictionaryGUI() {
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
         const query = queryParams.get('search');
+        const state = location.state;
 
-        if (query) {
+        if (state && state.searchResults) {
+            const { searchResults } = state;
+            setAnimeResults(searchResults.anime || []);
+            setMangaResults(searchResults.manga || []);
+            setCharResults(searchResults.characters || []);
+            setPeopleResults(searchResults.people || []);
+            setDisplayedSearchTerm(query);
+            setSearched(true);
+        } else if (query) {
             setSearchTerm(query);
         }
-    }, [location.search]);
-
-    const handleInputChange = (e) => {
-        setSearchTerm(e.target.value);
-    };
+    }, [location.search, location.state]);
 
     return (
         <div className="super-container">
@@ -103,30 +107,28 @@ function DictionaryGUI() {
                     <input
                         type="text"
                         value={searchTerm}
-                        onChange={handleInputChange}
+                        onChange={(e) => setSearchTerm(e.target.value)}
                         onKeyPress={handleKeyPress}
                         placeholder="Search Anime..."
                     />
                 </label>
                 <button onClick={handleSearch}>Search</button>
             </div>
-
-            {searched && (
-                <div className="jump">
-                    <h2>Search Results for: "{displayedSearchTerm}"</h2>
-                    <p>
-                        Jump to:{' '}
-                        <a onClick={() => scrollToSection('anime')}>Anime</a>
-                        <a onClick={() => scrollToSection('manga')}>Manga</a>
-                        <a onClick={() => scrollToSection('character')}>Characters</a>
-                        <a onClick={() => scrollToSection('people')}>People</a>
-                    </p>
-                </div>
-            )}
-
             {searched && (
                 <div className="content-wrapper">
-                    <div className="content">
+                        <div className="content">
+                        { /* Left Section */ }
+                        <div classname="left-section">
+                            <div className="jump">
+                                 <h2>Search Results for: "{displayedSearchTerm}"</h2>
+                                <p>
+                                    Jump to:{' '}
+                                    <a onClick={() => scrollToSection('anime')}>Anime</a>
+                                    <a onClick={() => scrollToSection('manga')}>Manga</a>
+                                    <a onClick={() => scrollToSection('character')}>Characters</a>
+                                    <a onClick={() => scrollToSection('people')}>People</a>
+                                 </p>
+                            </div>
                         <div className="search-results">
                             <div className="article">
                                 <h1 id="anime">Anime</h1>
@@ -142,7 +144,6 @@ function DictionaryGUI() {
                                     </div>
                                 ))}
                             </div>
-
                             <div className="article">
                                 <h1 id="manga">Manga</h1>
                                 {mangaResults.slice(0, 10).map((mangaResults) => (
@@ -157,7 +158,6 @@ function DictionaryGUI() {
                                     </div>
                                 ))}
                             </div>
-
                             <div className="article">
                                 <h1 id="character">Characters</h1>
                                 {charResults.slice(0, 10).map((charResults) => (
@@ -171,7 +171,6 @@ function DictionaryGUI() {
                                     </div>
                                 ))}
                             </div>
-
                             <div className="article">
                                 <h1 id="people">People</h1>
                                 {peopleResults.slice(0, 10).map((peopleResults) => (
@@ -188,6 +187,29 @@ function DictionaryGUI() {
                             </div>
                         </div>
                     </div>
+                    {/* Right Section */}
+                    <div className="right-section">
+                        <div className="jump">
+                            <h2>Related Information for: "{displayedSearchTerm}"</h2>
+                        </div>
+                        <div className="widget">
+                            <h2>News<a class="searchButton" href="">Search</a></h2>
+                            {/* Content for News */}
+                        </div>
+                        <div className="widget">
+                            <h2>Featured Articles</h2>
+                            {/* Content for Featured Articles */}
+                        </div>
+                        <div className="widget">
+                            <h2>Forum Topics</h2>
+                            {/* Content for Forum Topics */}
+                        </div>
+                        <div className="widget">
+                            <h2>Clubs</h2>
+                            {/* Content for Clubs */}
+                        </div>
+                    </div>
+                </div>
                 </div>
             )}
         </div>
