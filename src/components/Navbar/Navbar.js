@@ -8,10 +8,12 @@ function Navbar() {
 
     const handleSearch = () => {
         if (searchTerm.trim() !== '') {
-            history.push(`/dictionary?search=${encodeURIComponent(searchTerm)}`);
-        } 
-        else {
-            alert("Please enter something to search")
+            history.push({
+                pathname: '/dictionary',
+                search: `?search=${encodeURIComponent(searchTerm)}`
+            });
+        } else {
+            alert("Please enter something to search");
         }
     };
 
@@ -19,7 +21,7 @@ function Navbar() {
         if (e.key === 'Enter') {
             handleSearch();
         }
-    }
+    };
 
     return (
         <nav className="navbar">
@@ -34,28 +36,12 @@ function Navbar() {
                     <li><a href="#">Help</a></li>
                 </ul>
             </div>
-            {/* <div id="search-type">
-                <select name="types" id="type">
-                    <option>All</option>
-                    <option>Anime</option>
-                    <option>Manga</option>
-                    <option>Characters</option>
-                    <option>People</option>
-                    <option>Companies</option>
-                    <option>Manga Store</option>
-                    <option>News</option>
-                    <option>Featured Articles</option>
-                    <option>Forum</option>
-                    <option>Clubs</option>
-                    <option>Users</option>
-                </select>
-            </div> */}
             <div className="search">
                 <input type="text" value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Search Anime, Manga, and more..." />
-                <button onClick={handleSearch} onChange={(e) => setSearchTerm(e.target.value)}>Search</button>
+                <button onClick={handleSearch}>Search</button>
             </div>
         </nav>
     );
