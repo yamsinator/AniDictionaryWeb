@@ -158,6 +158,7 @@
     margin-bottom: 5px;
 }
 
+<<<<<<< HEAD
 /* Left Section Styles */
 .left-section {
     flex: 2;
@@ -176,44 +177,23 @@
 }   
 
 /* Widget Styles */
+=======
+/* Style for the right side */
+.right-side {
+    display: grid;
+    grid-gap: 10px;
+    /* Add spacing between grid items */
+}
+
+/* Style for widget containers */
+>>>>>>> parent of 8de0084 (Updated CSS file to reflect left and right sections of JS file of the DictionaryGUI.)
 .widget {
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
 }
 
-.widget:last-child {
-    margin-bottom: 0;
-    /* Remove bottom margin from last widget */
-}
-
+/* Style for widget headings */
 .widget h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #666;
-    /* Horizontal line between widgets */
-}
-
-/* HomePage.css */
-
-/* Styles for anime items and scroll container */
-.scroll-container {
-    display: flex;
-    overflow-x: auto;
-    scrollbar-width: none; /* Hide scrollbar for Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer */
-}
-
-.scroll-container::-webkit-scrollbar {
-    display: none; /* Hide scrollbar for WebKit (Chrome, Safari, etc.) */
-}
-
-.anime-item {
-    margin-right: 20px;
-}
-
-.anime-image {
-    width: 200px; /* Adjust image width as needed */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    margin-bottom: 10px;
 }
