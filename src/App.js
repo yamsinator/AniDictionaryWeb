@@ -14,13 +14,13 @@ function App() {
         <Header />
         <Navbar />
         <Switch>
-          <Route exact path="/">
+        <Route exact path="/home">
             <HomePage />
           </Route>
           <Route exact path="/dictionary">
             <DictionaryGUI />
           </Route>
-          <Route exact path="/info">
+          <Route exact path="/">
             <InfoPage />
           </Route>
         </Switch>
