@@ -28,11 +28,7 @@ function DictionaryGUI() {
     const charactersRef = useRef(null);
     const peopleRef = useRef(null);
 
-<<<<<<< HEAD
     // Add delay to API request
-=======
-    // Helper function to add a delay
->>>>>>> parent of 8de0084 (Updated CSS file to reflect left and right sections of JS file of the DictionaryGUI.)
     const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
     // Modified handleSearch function to accept a term
@@ -133,7 +129,6 @@ function DictionaryGUI() {
             {searched && (
                 <div className="content-wrapper">
                     <div className="content">
-<<<<<<< HEAD
                         {/* Left Section */}
                         <div className="left-section">
                             <div className="jump">
@@ -158,19 +153,6 @@ function DictionaryGUI() {
                                                 <p>Score: {result.score ? result.score : 'N/A'}</p>
                                                 <p>{result.members.toLocaleString()} members</p>
                                             </div>
-=======
-                        <div className="search-results">
-                            <div className="article">
-                                <h1 id="anime">Anime</h1>
-                                {animeResults.slice(0, 10).map((animeResults) => (
-                                    <div key={animeResults.mal_id} ref={animeRef} className="search-result">
-                                        <img src={animeResults.images.jpg.large_image_url} alt={animeResults.title} />
-                                        <div className="result-info">
-                                            <a href={`/info/${animeResults.title}`}><h3>{animeResults.title}</h3></a>
-                                            <p>{animeResults.type} ({animeResults.episodes} eps)</p>
-                                            <p>Score: {animeResults.score ? animeResults.score : 'N/A'}</p>
-                                            <p>{animeResults.members.toLocaleString()} members</p>
->>>>>>> parent of 8de0084 (Updated CSS file to reflect left and right sections of JS file of the DictionaryGUI.)
                                         </div>
                                     ))}
                                 </div>
@@ -216,7 +198,6 @@ function DictionaryGUI() {
                                     ))}
                                 </div>
                             </div>
-<<<<<<< HEAD
                         </div>
                         {/* Right Section */}
                         <div className="right-section">
@@ -238,51 +219,6 @@ function DictionaryGUI() {
                             <div className="widget">
                                 <h2>Clubs</h2>
                                 {/* Content for Clubs */}
-=======
-
-                            <div className="article">
-                                <h1 id="manga">Manga</h1>
-                                {mangaResults.slice(0, 10).map((mangaResults) => (
-                                    <div key={mangaResults.mal_id} ref={mangaRef} className="search-result">
-                                        <img src={mangaResults.images.jpg.large_image_url} alt={mangaResults.title} />
-                                        <div className="result-info">
-                                            <a href={`/InfoPage/${mangaResults.title}`}><h3>{mangaResults.title}</h3></a>
-                                            <p>{mangaResults.type} ({mangaResults.volumes} vols)</p>
-                                            <p>Score: {mangaResults.score}</p>
-                                            <p>{mangaResults.members.toLocaleString()} members</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="article">
-                                <h1 id="character">Characters</h1>
-                                {charResults.slice(0, 10).map((charResults) => (
-                                    <div key={charResults.mal_id} ref={charactersRef} className="search-result">
-                                        <img src={charResults.images.jpg.image_url} alt={charResults.name} />
-                                        <div className="result-info">
-                                            <a href={`/InfoPage/${charResults.name}`}><h3>{charResults.name}</h3></a>
-                                            <p>{charResults.name_kanji}</p>
-                                            <p>Favorites: {charResults.favorites.toLocaleString()}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <div className="article">
-                                <h1 id="people">People</h1>
-                                {peopleResults.slice(0, 10).map((peopleResults) => (
-                                    <div key={peopleResults.mal_id} ref={peopleRef} className="search-result">
-                                        <img src={peopleResults.images.jpg.image_url} alt={peopleResults.name} />
-                                        <div className="result-info">
-                                            <a href={`/InfoPage/${peopleResults.name}`}><h3>{peopleResults.name}</h3></a>
-                                            <p>{peopleResults.given_name} ({peopleResults.family_name})</p>
-                                            <p>{formatDate(peopleResults.birthday)}</p>
-                                            <p>{peopleResults.favorites.toLocaleString()}</p>
-                                        </div>
-                                    </div>
-                                ))}
->>>>>>> parent of 8de0084 (Updated CSS file to reflect left and right sections of JS file of the DictionaryGUI.)
                             </div>
                         </div>
                     </div>

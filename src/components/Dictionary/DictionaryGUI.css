@@ -158,7 +158,6 @@
     margin-bottom: 5px;
 }
 
-<<<<<<< HEAD
 /* Left Section Styles */
 .left-section {
     flex: 2;
@@ -177,16 +176,6 @@
 }   
 
 /* Widget Styles */
-=======
-/* Style for the right side */
-.right-side {
-    display: grid;
-    grid-gap: 10px;
-    /* Add spacing between grid items */
-}
-
-/* Style for widget containers */
->>>>>>> parent of 8de0084 (Updated CSS file to reflect left and right sections of JS file of the DictionaryGUI.)
 .widget {
     padding: 20px;
     border-radius: 8px;
