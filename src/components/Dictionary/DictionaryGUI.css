@@ -66,6 +66,8 @@
     margin-bottom: 15px;
     padding: 10px;
     background-color: #276cc0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
 }
 
@@ -160,29 +162,36 @@
 
 /* Left Section Styles */
 .left-section {
-    flex: 2;
-    background-color: #222121;
+    flex: 1;
+    background-color: #222121; /* <--- Changed background color */
     padding: 20px;
     border-right: 2px solid #666;
-    margin-right: 0;
-    /* Vertical line separating left-section */
+    margin-right: 10px; /* <--- Reduced margin */
 }
 
 /* Right Section Styles */
 .right-section {
     flex: 1;
-    background-color: #222121;
+    margin-top: 25px; /* <--- Added margin to the top */
+    background-color: #444; /* <--- Changed background color */
     padding: 20px;
 }   
 
 /* Widget Styles */
 .widget {
-    padding: 20px;
-    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
-/* Style for widget headings */
-.widget h2 {
-    font-size: 16px;
-    margin-bottom: 10px;
+.right-section .widget h2 {
+    font-size: 15px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #666; /* <--- Added border */
+}
+
+.widget .searchButton {
+    font-size: 15px;
+    color: #276cc0;
+    text-decoration: none;
+    text-align: right;
 }

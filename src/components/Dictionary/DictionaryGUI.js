@@ -112,20 +112,6 @@ function DictionaryGUI() {
                 </label>
                 <button onClick={handleSearch}>Search</button>
             </div>
-
-            {searched && (
-                <div className="jump">
-                    <h2>Search Results for: "{displayedSearchTerm}"</h2>
-                    <p>
-                        Jump to:{' '}
-                        <a onClick={() => scrollToSection('anime')}>Anime</a>
-                        <a onClick={() => scrollToSection('manga')}>Manga</a>
-                        <a onClick={() => scrollToSection('character')}>Characters</a>
-                        <a onClick={() => scrollToSection('people')}>People</a>
-                    </p>
-                </div>
-            )}
-
             {searched && (
                 <div className="content-wrapper">
                     <div className="content">
@@ -209,15 +195,15 @@ function DictionaryGUI() {
                                 {/* Content for News */}
                             </div>
                             <div className="widget">
-                                <h2>Featured Articles</h2>
+                                <h2>Featured Articles<a className="searchButton" href="">Search</a></h2>
                                 {/* Content for Featured Articles */}
                             </div>
                             <div className="widget">
-                                <h2>Forum Topics</h2>
+                                <h2>Forum Topics<a className="searchButton" href="">Search</a></h2>
                                 {/* Content for Forum Topics */}
                             </div>
                             <div className="widget">
-                                <h2>Clubs</h2>
+                                <h2>Clubs<a className="searchButton" href="">Search</a></h2>
                                 {/* Content for Clubs */}
                             </div>
                         </div>
