@@ -13,7 +13,10 @@
     display: flow-root;
     flex-direction: column;
     align-items: center;
-    margin-top: 20px;;
+    margin-top: 20px;
+    max-width: 1200px; /* Set a fixed maximum width for the content wrapper */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Panel Header Styles */
@@ -33,12 +36,13 @@
 /* Content Section Styles */
 #content {
     display: flex;
-    width: 100%;
+    width: 1200px; /* Set fixed width for the content */
+    overflow: hidden; /* Hide overflow to prevent resizing */
 }
 
 /* Left Section Styles */
 .left-section {
-    flex: 2;
+    width: 800px; /* Set fixed width for the left section */
     background-color: #444;
     padding: 20px;
     border-right: 2px solid #666;
@@ -48,7 +52,7 @@
 
 /* Right Section Styles */
 .right-section {
-    flex: 1;
+    width: 400px; /* Set fixed width for the right section */
     background-color: #444;
     padding: 20px;
 }   
@@ -72,21 +76,37 @@
 }
 
 /* Styles for anime items and scroll container */
-.scroll-container {
+.widget .scroll-container {
     display: flex;
     overflow-x: auto;
     scrollbar-width: none; /* Hide scrollbar for Firefox */
     -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer */
+    width: 100%; /* Set fixed width for the scroll container */
 }
 
 .scroll-container::-webkit-scrollbar {
     display: none; /* Hide scrollbar for WebKit (Chrome, Safari, etc.) */
 }
 
-.anime-item {
-    margin-right: 20px;
+/* Style for the horizontal scroll list */
+.horizontal-scroll {
+    display: flex; /* Use flexbox for horizontal layout */
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    width: fit-content; /* Ensure the list doesn't stretch the container */
 }
 
+/* Individual blank rectangles */
+.blank-rectangle {
+    width: 150px; /* Set width of the rectangles */
+    height: 200px; /* Set height of the rectangles */
+    background-color: #ccc; /* Set background color for visibility */
+    margin-right: 20px; /* Space between rectangles */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Additional styles for images in anime items */
 .anime-image {
     width: 200px; /* Adjust image width as needed */
     height: auto; /* Maintain aspect ratio */
