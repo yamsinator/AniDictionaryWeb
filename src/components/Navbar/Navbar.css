@@ -49,18 +49,17 @@
     /* Use Helvetica font */
 }
 
-.navbar .search button {
+.navbar .dictionary button {
     padding: 12px 20px; /* Add padding to the button */
     font-size: 16px; /* Set the font size */
     border-radius: 8px; /* Apply border radius */
     background-color: #333; /* Set background color */
-    margin-left: auto;
     color: #fff; /* Set text color */
     cursor: pointer; /* Show pointer cursor on hover */
     outline: none; /* Remove outline */
     transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-.navbar .search button:hover {
+.navbar .dictionary button:hover {
     background-color: #626161;
 }
