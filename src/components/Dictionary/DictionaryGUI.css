@@ -4,7 +4,7 @@
     border: 2px solid #666;
     border-radius: 2px;
     border-color: #626161;
-    max-width: 67%; /* Set a maximum width */
+    max-width: 1000px; /* Set a maximum width */
     margin: 50px auto; /* Center the container horizontally with top and bottom margin */
     padding: 20px; /* Add padding inside the container */
 }
@@ -57,7 +57,7 @@
 }
 
 .jump {
-    text-align: center;
+    text-align: left;
 }
 
 .jump h2 {
@@ -67,6 +67,7 @@
     background-color: #276cc0;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-align: center;
 }
 
 .jump a {
@@ -97,13 +98,10 @@
 
 /* Style for the main content container */
 .content {
-    display: grid;
-    grid-template-columns: 1fr 300px;
-    /* Use grid layout with two columns */
-    grid-gap: 20px;
-    /* Add spacing between grid items */
-    max-width: 1200px;
-    /* Limit maximum width */
+    display: flex;
+    justify-content: space-between;
+    /* Use flex layout with space between items */
+    max-width: 100%;
     width: 100%;
 }
 
@@ -163,23 +161,20 @@
 
 /* Left Section Styles */
 .left-section {
-    width: calc(67% - 10px); /* Adjust width to fit within content */
+    flex: 2;
     background-color: #222121; /* <--- Changed background color */
     padding: 20px;
-    border: 2px solid #666; /* Changed to a full border */
-    border-radius: 8px; /* Add rounded corners */
+    border-right: 2px solid #666;
     margin-right: 10px; /* <--- Reduced margin */
 }
 
 /* Right Section Styles */
 .right-section {
-    width: calc(33% - 10px); /* Adjust width to fit within content */
+    flex: 1;
     margin-top: 25px; /* <--- Added margin to the top */
-    background-color: #444; /* <--- Changed background color */
+    background-color: #222121; /* <--- Changed background color */
     padding: 20px;
-    border: 2px solid #666; /* Changed to a full border */
-    border-radius: 8px; /* Add rounded corners */
-}
+}   
 
 /* Widget Styles */
 .widget {
