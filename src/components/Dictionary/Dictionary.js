@@ -9,7 +9,7 @@ const animeNewsCache = {};
 // Gets search based from the anime, manga, or character API URLs
 async function performSearch(type, searchQuery) {
     try {
-        const response = await fetch(`${API_BASE_URL}${type}?q=${encodeURIComponent(searchQuery)}`);
+        const response = await fetch(`${API_BASE_URL}${type}?q=${encodeURIComponent(searchQuery)}&sfw=true`);
         if (!response.ok) {
             throw new Error('Failed to fetch data');
         }
