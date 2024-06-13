@@ -5,8 +5,10 @@
     background-color: #222121;
     color: #fff;
     padding: 20px;
-    font-family: "Helvetica", sans-serif;
-    /* Sets font for entire page */
+    font-family: "Helvetica", sans-serif; /* Sets font for entire page */
+    overflow-x: hidden;
+    overflow-y: hidden; /* Hide vertical overflow */
+    max-width: 100%;
 }
 
 .content-wrapper {
@@ -14,9 +16,10 @@
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-    max-width: 1200px; /* Set a fixed maximum width for the content wrapper */
+    max-width: 100%; /* Set a fixed maximum width for the content wrapper */
     margin-left: auto;
     margin-right: auto;
+    padding: 0 20px;
 }
 
 /* Panel Header Styles */
@@ -24,8 +27,7 @@
     font-family: "Helvetica", sans-serif;
     margin-bottom: 20px;
     width: 100%;
-    text-align: left;
-    /* Center align the header */
+    text-align: left; /* Center align the header */
 }
 
 .panel-header h1 {
@@ -37,7 +39,7 @@
 /* Content Section Styles */
 #content {
     display: flex;
-    width: 1200px; /* Set fixed width for the content */
+    width: 100%; /* Set fixed width for the content */
     overflow: hidden; /* Hide overflow to prevent resizing */
 }
 
@@ -67,21 +69,20 @@
 }
 
 .widget:last-child {
-    margin-bottom: 0;
-    /* Remove bottom margin from last widget */
+    margin-bottom: 0; /* Remove bottom margin from last widget */
 }
 
 .widget h2 {
     font-size: 20px;
     margin-bottom: 15px;
-    border-bottom: 2px solid #666;
-    /* Horizontal line between widgets */
+    border-bottom: 2px solid #666; /* Horizontal line between widgets */
 }
 
 /* Styles for anime items and scroll container */
 .widget .scroll-container {
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden; /* Hide vertical overflow */
     scrollbar-width: none; /* Hide scrollbar for Firefox */
     -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer */
     width: 100%; /* Set fixed width for the scroll container */
@@ -111,8 +112,21 @@
 
 /* Additional styles for images in anime items */
 .anime-image {
-    width: 200px; /* Adjust image width as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 160px; /* Adjust image width as needed */
+    height: 220px; /* Maintain aspect ratio */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.anime-image a {
+    display: block;
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.title-overlay-img {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
 }
