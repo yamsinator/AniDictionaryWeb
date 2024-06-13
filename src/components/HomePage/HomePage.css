@@ -2,7 +2,7 @@
 
 /* Overall Homepage Styles */
 .homepage {
-    background-color: #2d2c2c;
+    background-color: #222121;
     color: #fff;
     padding: 20px;
     font-family: "Helvetica", sans-serif;
@@ -43,10 +43,12 @@
 /* Left Section Styles */
 .left-section {
     width: 800px; /* Set fixed width for the left section */
-    background-color: #444;
+    background-color: #222121;
     padding: 20px;
-    border-right: 2px solid #666;
+    border: 2px solid #666; /* Change to border-right */
     margin-right: 0;
+    /* border-color: #2d2d2d;
+    border-width: 2px; */
     /* Vertical line separating left-section */
 }
 

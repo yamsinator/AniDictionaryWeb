@@ -49,7 +49,6 @@
     width: 100px;
     height: 52px;
     margin-top: -7px;
-
 }
 
 /* Hover effect for the search button */
@@ -68,7 +67,6 @@
     background-color: #276cc0;
     white-space: nowrap;
     text-overflow: ellipsis;
-
 }
 
 .jump a {
@@ -92,6 +90,9 @@
     /* Center content horizontally */
     min-height: 80vh; /* Adjust the height as needed */
     padding: 20px;
+    max-width: 1200px; /* Ensure the wrapper does not exceed the viewport */
+    margin: 0 auto; /* Center the wrapper horizontally */
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Style for the main content container */
@@ -146,7 +147,7 @@
 }
 
 .result-info a {
-    color: 276cc0;
+    color: #276cc0;
 }
 
 /* Additional styles for result info text */
@@ -162,20 +163,23 @@
 
 /* Left Section Styles */
 .left-section {
-    flex: 1;
+    width: calc(67% - 10px); /* Adjust width to fit within content */
     background-color: #222121; /* <--- Changed background color */
     padding: 20px;
-    border-right: 2px solid #666;
+    border: 2px solid #666; /* Changed to a full border */
+    border-radius: 8px; /* Add rounded corners */
     margin-right: 10px; /* <--- Reduced margin */
 }
 
 /* Right Section Styles */
 .right-section {
-    flex: 1;
+    width: calc(33% - 10px); /* Adjust width to fit within content */
     margin-top: 25px; /* <--- Added margin to the top */
     background-color: #444; /* <--- Changed background color */
     padding: 20px;
-}   
+    border: 2px solid #666; /* Changed to a full border */
+    border-radius: 8px; /* Add rounded corners */
+}
 
 /* Widget Styles */
 .widget {
