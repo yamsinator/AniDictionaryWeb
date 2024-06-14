@@ -101,7 +101,7 @@
 .anime-item {
     position: relative; /* Needed for absolute positioning of the title */
     width: 160px; /* Set the width for each item */
-    margin-right: 20px; /* Space between items */
+    margin-right: 15px; /* Space between items */
 }
 
 .anime-link {
