@@ -7,9 +7,7 @@ const HomePage = () => {
     const [animeData, setAnimeData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    const sampleBlanks = Array(8).fill(null); // Create an array with 8 null values to represent blank rectangles
-
+    
     const isNewSpring2024Anime = (anime) => {
         const startDate = new Date(anime.start_date);
         return startDate >= new Date('2024-03-01') && startDate <= new Date('2024-05-31');
@@ -131,27 +129,28 @@ return (
                         <div className="widget">
                             {/* Current Season Anime */}
                             <h2>Spring 2024 Anime</h2>
-                            <div className="scroll-container">
-                                <ul className="horizontal-scroll">
-                                {animeData.slice(0,10).map((anime) => (
-                                        <li key={anime.mal_id} className="anime-image">
-                                            <a href={/* Temp URL */anime.url}>
-                                                <img src={anime.images.jpg.image_url} alt={anime.title} className="anime-image" />
-                                                <span class="title-overlay-img">{anime.title}</span>
+                            <div class="btn-widget-slide-side left"></div>
+                            <div class="btn-widget-slide-side right" ></div>
+                                <div className="scroll-container">
+                                    <ul className="horizontal-scroll">
+                                    {animeData.slice(0,10).map((anime) => (
+                                        <li key={anime.mal_id} className="anime-item">
+                                            <a href={anime.url} className="anime-link">
+                                                <img src={anime.images.jpg.image_url} alt={anime.title} className="anime-image"/>
+                                                <span className="title-overlay">{anime.title}</span>
                                             </a>
-                                            
                                         </li>
                                     ))}
-                                </ul>
-                            </div>
+                                    </ul>
+                                </div>
                         </div>
                         <div className="widget">
                             <h2>Manga</h2>
                             <div className="scroll-container">
                                 {/* Render images here */}
                                 <ul className="horizontal-scroll">
-                                    {sampleBlanks.map((_, index) => (
-                                        <li key={index} className="blank-rectangle"></li>
+                                    {animeData.map((_, index) => (
+                                        <li key={index}></li>
                                     ))}
                                 </ul>
                             </div>
@@ -161,8 +160,8 @@ return (
                             <div className="scroll-container">
                                 {/* Render images here */}
                                 <ul className="horizontal-scroll">
-                                    {sampleBlanks.map((_, index) => (
-                                        <li key={index} className="blank-rectangle"></li>
+                                    {animeData.map((_, index) => (
+                                        <li key={index}></li>
                                     ))}
                                 </ul>
                             </div>
@@ -172,8 +171,8 @@ return (
                             <div className="scroll-container">
                                 {/* Render images here */}
                                 <ul className="horizontal-scroll">
-                                    {sampleBlanks.map((_, index) => (
-                                        <li key={index} className="blank-rectangle"></li>
+                                    {animeData.map((_, index) => (
+                                        <li key={index}></li>
                                     ))}
                                 </ul>
                             </div>
