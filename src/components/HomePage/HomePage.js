@@ -5,47 +5,91 @@ import './HomePage.css';
 const HomePage = () => {
     const [animeData, setAnimeData] = useState([]);
     const [mangaData, setMangaData] = useState([]);
+    const [recommendations, setRecommendations] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchAnimeData = async () => {
-            try {
-                const response = await axios.get('https://api.jikan.moe/v4/seasons/2024/spring');
-                if (response.data && response.data.data) {
-                    // console.log('Fetched Anime Data:', response.data.data); // Debug log
-                    setAnimeData(response.data.data);
-                } else {
-                    console.error('No data found in response:', response);
-                }
-            } catch (error) {
+    const MAX_RETRIES = 3;
+
+    // Function to fetch anime data
+    const fetchAnimeData = async (retries = 0) => {
+        try {
+            const response = await axios.get('https://api.jikan.moe/v4/seasons/2024/spring');
+            if (response.data && response.data.data) {
+                setAnimeData(response.data.data);
+            } else {
+                console.error('No data found in response:', response);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 429 && retries < MAX_RETRIES) {
+                setTimeout(() => fetchAnimeData(retries + 1), 1000); // Retry after 1 second
+            } else {
                 console.error('Error fetching anime data:', error);
                 setError(error);
-            } finally {
-                setLoading(false);
             }
-        };
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        const fetchMangaData = async () => {
-            try {
-                const response = await axios.get('https://api.jikan.moe/v4/manga');
-                if (response.data && response.data.data) {
-                    // console.log('Fetched Manga Data:', response.data.data); // Debug log
-                    setMangaData(response.data.data);
-                } else {
-                    console.error('No data found in response:', response);
-                }
-            } catch (error) {
+    // Function to fetch manga data
+    const fetchMangaData = async (retries = 0) => {
+        try {
+            const response = await axios.get('https://api.jikan.moe/v4/manga');
+            if (response.data && response.data.data) {
+                setMangaData(response.data.data);
+            } else {
+                console.error('No data found in response:', response);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 429 && retries < MAX_RETRIES) {
+                setTimeout(() => fetchMangaData(retries + 1), 1000); // Retry after 1 second
+            } else {
                 console.error('Error fetching manga data:', error);
                 setError(error);
-            } finally {
-                setLoading(false);
             }
-        };
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    // Function to fetch recommendations for a given anime ID
+    const fetchRecommendations = async (animeId, retries = 0) => {
+        try {
+            const response = await axios.get(`https://api.jikan.moe/v4/anime/${animeId}/recommendations`);
+            if (response.data && response.data.data) {
+                setRecommendations(response.data.data);
+            } else {
+                console.error('No data found in response:', response);
+            }
+        } catch (error) {
+            if (error.response && error.response.status === 429 && retries < MAX_RETRIES) {
+                setTimeout(() => fetchRecommendations(animeId, retries + 1), 1000); // Retry after 1 second
+            } else {
+                console.error('Error fetching recommendations:', error);
+                setError(error);
+            }
+        }
+    };
+
+    // Function to select a random anime ID and fetch recommendations
+    const fetchRandomRecommendations = () => {
+        if (animeData.length > 0) {
+            const randomAnime = animeData[Math.floor(Math.random() * animeData.length)];
+            fetchRecommendations(randomAnime.mal_id);
+        }
+    };
+
+    useEffect(() => {
         fetchAnimeData();
         fetchMangaData();
     }, []);
+
+    useEffect(() => {
+        if (animeData.length > 0) {
+            fetchRandomRecommendations();
+        }
+    }, [animeData]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -58,6 +102,7 @@ const HomePage = () => {
     return (
         <div className="homepage">
             <div className="content-wrapper">
+                {/* Left Section */}
                 <div className="panel-header">
                     <h1>Welcome to AniDictionary!</h1>
                 </div>
@@ -101,8 +146,13 @@ const HomePage = () => {
                             <h2>Anime Suggestions</h2>
                             <div className="scroll-container">
                                 <ul className="horizontal-scroll">
-                                    {animeData.map((_, index) => (
-                                        <li key={index}></li>
+                                    {recommendations.slice(0, 10).map((rec) => (
+                                        <li key={rec.entry.mal_id} className="anime-item">
+                                            <a href={rec.entry.url} className="anime-link">
+                                                <img src={rec.entry.images.jpg.image_url} alt={rec.entry.title} className="anime-image" />
+                                                <span className="title-overlay">{rec.entry.title}</span>
+                                            </a>
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
@@ -118,6 +168,7 @@ const HomePage = () => {
                             </div>
                         </div>
                     </div>
+                    {/* Right Section */}
                     <div className="right-section">
                         <div className="widget">
                             <h2>Top Anime</h2>
